@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Portfólio Simples</title>
+  <style>
+    body { font-family: sans-serif; padding: 20px; margin: 0; }
+    header, footer { text-align: center; background: #333; color: white; padding: 10px; }
+    nav a { margin: 0 10px; color: white; text-decoration: none; }
+    section { margin: 30px 0; }
+    img { max-width: 100%; height: auto; }
+    form input, form textarea { display: block; width: 100%; margin-bottom: 10px; padding: 8px; }
+    button { padding: 10px 20px; background: #333; color: white; border: none; }
+    .erro { color: red; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Meu Portfólio</h1>
+    <nav>
+      <a href="#sobre">Sobre</a>
+      <a href="#contato">Contato</a>
+    </nav>
+  </header>
+
+  <section id="sobre">
+    <h2>Sobre Mim</h2>
+    <p>Sou um desenvolvedor web iniciante e estou gostando de fazer novos codigos </p>
+  </section>
+
+  
+  <section id="contato">
+    <h2>Contato</h2>
+    <form id="formulario">
+      <input type="text" id="nome" placeholder="Seu nome">
+      <input type="email" id="email" placeholder="Seu e-mail">
+      <textarea id="mensagem" placeholder="Sua mensagem"></textarea>
+      <button type="submit">Enviar</button>
+      <p class="erro" id="mensagem-erro"></p>
+    </form>
+  </section>
+
+  <footer>
+    <p>Feito por Joao Pedro © 2025</p>
+  </footer>
+
+  <script>
+    document.getElementById("formulario").addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      const nome = document.getElementById("nome").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const mensagem = document.getElementById("mensagem").value.trim();
+      const erro = document.getElementById("mensagem-erro");
+
+      if (!nome || !email || !mensagem) {
+        erro.textContent = "Por favor, preencha todos os campos.";
+        return;
+      }
+
+      const emailValido = /^[^@]+@[^@]+\.[^@]+$/;
+      if (!emailValido.test(email)) {
+        erro.textContent = "Digite um e-mail válido.";
+        return;
+      }
+
+      erro.textContent = "";
+      alert("Mensagem enviada com sucesso!");
+    });
+  </script>
+
+</body>
+</html>
